@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}">Detalle</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 30px;">
+    <h1 th:text="${titulo}"></h1>
+    <div th:if="${empleado != null}" style="border: 1px solid #ccc; padding: 20px; width: 300px;">
+        <p><strong>ID:</strong> <span th:text="${empleado.id}"></span></p>
+        <p><strong>Nombre Completo:</strong> <span th:text="${empleado.nombre + ' ' + empleado.apellido}"></span></p>
+        <p><strong>Puesto:</strong> <span th:text="${empleado.puesto}"></span></p>
+        <p><strong>Direccion:</strong> <span th:text="${empleado.direccion != null ? empleado.direccion : 'No registrada'}"></span></p>
+        <p><strong>Telefono:</strong> <span th:text="${empleado.telefono}"></span></p>
+    </div>
+    <div th:if="${empleado == null}">
+        <p style="color: red;">El empleado solicitado no existe.</p>
+    </div>
+    <br>
+    <a th:href="@{/mvc/empleados/listar}">Volver al Listado</a>
+</body>
+</html>
